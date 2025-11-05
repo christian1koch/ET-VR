@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ddf43ff1e4043139d06c5467dc5002, type: 3}
+  m_Name: Ice Lance
+  m_EditorClassIdentifier: Assembly-CSharp::Spellcasting_System.Spell
+  spellName: Ice Lance
+  projectilePrefab: {fileID: 8983375149500841028, guid: 9d49d4e1f4682441b82060b7ef988d7c, type: 3}
+  damage: 25
+  lifetime: 5
+  speed: 40
+  cooldown: 0.2
+  manaCost: 10
