@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfe1df7ed391a24fbe2a2d275e81b06, type: 3}
   m_Name: PointPoseHandShape
   m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PoseDetection.ShapeRecognizer
-  _shapeName: 
+  _shapeName: 2
   _thumbFeatureConfigs:
     _value:
     - _mode: 0
