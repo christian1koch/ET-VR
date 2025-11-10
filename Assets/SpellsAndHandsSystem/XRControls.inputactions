@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "XRControls",
+    "maps": [
+        {
+            "name": "LeftHand",
+            "id": "9867bc12-d0f9-4577-aef9-4176dbe015c0",
+            "actions": [
+                {
+                    "name": "Trigger",
+                    "type": "Button",
+                    "id": "f96a45de-b32f-4e0d-8b9d-5c1d202115ab",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "51c6bd3d-5099-4f69-a922-5760e3b0969e",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
