@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: Assembly-CSharp::Spellcasting_System.Spell
   spellName: New Spell
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 2837538896785756697, guid: 96c9bb17f691148bf826b8d5d404a06b, type: 3}
   damage: 25
   lifetime: 5
   speed: 25

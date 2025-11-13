@@ -13,9 +13,19 @@ public class SpellEventManager : MonoBehaviour
         recognitionSystem.OnRecognized += SetSelectedSpell;
     }
 
+    private void OnDisable()
+    {
+        recognitionSystem.OnRecognized -= SetSelectedSpell;
+    }
+
     void SetSelectedSpell(int spellNumber)
     {
         selectedSpell = spellNumber;
+    }
+
+    public void CastSpell()
+    {
+        onSpellCast?.Invoke(selectedSpell);
     }
     
 }

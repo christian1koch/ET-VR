@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 namespace Spellcasting_System
 {
@@ -9,33 +10,22 @@ namespace Spellcasting_System
         [Header("Setup")]
         public Transform castPoint;                // Empty transform in front of camera
         public List<Spell> availableSpells;        // Assign ScriptableObjects here
-
-        private int currentSpellIndex = 0;
+        
         private float nextCastTime = 0f;
+        [SerializeField] private SpellEventManager spellEventManager;
 
-        private void Update()
+        private void OnEnable()
         {
-            HandleSpellSwitch();
-            HandleCast();
+            spellEventManager.onSpellCast += HandleCast;
         }
 
-        private void HandleSpellSwitch()
+        private void OnDisable()
         {
-            // Mouse wheel scroll to switch spells
-            float scroll = Mouse.current.scroll.ReadValue().y;
-            if (scroll != 0 && availableSpells.Count > 0)
-            {
-                currentSpellIndex = (currentSpellIndex + (scroll > 0 ? 1 : -1) + availableSpells.Count) % availableSpells.Count;
-                Debug.Log("Selected spell: " + availableSpells[currentSpellIndex].spellName);
-            }
+            spellEventManager.onSpellCast -= HandleCast;
         }
-
-        private void HandleCast()
+        private void HandleCast(int spellNum)
         {
-            if (availableSpells.Count == 0) return;
-            if (!Mouse.current.leftButton.wasPressedThisFrame) return;
-
-            Spell spell = availableSpells[currentSpellIndex];
+            Spell spell = availableSpells[spellNum];
             if (Time.time < nextCastTime)
                 return; // still cooling down
            

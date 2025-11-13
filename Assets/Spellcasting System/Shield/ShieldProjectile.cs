@@ -18,10 +18,7 @@ public class ShieldProjectile : MonoBehaviour, SpellBehaviour
         if (sourceSpell == null) return;
 
         // Lifetime check
-        if (Mouse.current.leftButton.isPressed)
-        {
-            return;
-        }
-        Destroy(gameObject);
+        if (Time.time - spawnTime >= sourceSpell.lifetime)
+            Destroy(gameObject);
     }
 }
