@@ -16,6 +16,11 @@ namespace Spellcasting_System
             var rb = GetComponent<Rigidbody>();
                 rb.linearVelocity = castPoint.forward * sourceSpell.speed;
                 // rotate 90 degrees in the y axis cause the model is -90 degrees
+                Debug.Log("Forward");
+                Debug.Log(castPoint.forward);
+
+                Debug.Log("Rotation");
+                Debug.Log(castPoint.rotation);
         }
 
 
