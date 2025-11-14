@@ -308,39 +308,6 @@ Transform:
   - {fileID: 726521468}
   m_Father: {fileID: 691990880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &372992663 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3903482225804038116, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1161515237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &372992665 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7218948594749983592, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1161515237}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372992663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8733ebe23f85185428441f8c331788fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &372992667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372992663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e654f4e049a275f4abd192bae13fa113, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Oculus.Interaction.Locomotion.FlyingLocomotor
-  _characterController: {fileID: 372992665}
-  _playerOrigin: {fileID: 1224091767}
-  _playerEyes: {fileID: 1995148215}
-  _acceleration: 150
-  _airDamping: 30
 --- !u!1 &446031666
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,11 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7daff26e66096cd49a253ca3ab592c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &601034198 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3903482226883268838, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1161515237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &615207084
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,22 +896,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3903482226883268839, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
   m_PrefabInstance: {fileID: 1161515237}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &860636405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601034198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd3fa6da4d7f23d4c8d39ac4a3005dbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FlyingController
-  locomotor: {fileID: 372992667}
-  headTransform: {fileID: 1416394149}
-  flySpeed: 1
-  gravity: 3
 --- !u!1 &914494358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,10 +1293,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5801245061754409418, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801245061754409418, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       propertyPath: _playerEyes
       value: 
       objectReference: {fileID: 1995148215}
@@ -1362,14 +1304,6 @@ PrefabInstance:
       propertyPath: _ovrCameraRig
       value: 
       objectReference: {fileID: 1224091765}
-    - target: {fileID: 6744807187139327233, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-      propertyPath: _handlers.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744807187139327233, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-      propertyPath: '_handlers.Array.data[0]'
-      value: 
-      objectReference: {fileID: 372992667}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1380,12 +1314,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4148778239110795873, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1161515240}
-    - targetCorrespondingSourceObject: {fileID: 3903482226883268838, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 860636405}
-    - targetCorrespondingSourceObject: {fileID: 3903482225804038116, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 372992667}
   m_SourcePrefab: {fileID: 100100000, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
 --- !u!4 &1161515238 stripped
 Transform:
@@ -1717,11 +1645,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!4 &1416394149 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7834255314859882876, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1161515237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1500227463
 GameObject:
   m_ObjectHideFlags: 0
