@@ -14,9 +14,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Main VR Scene.unity
     guid: 1bc266dc28fce401285584f29c33fc92
-  - enabled: 1
-    path: Assets/Scenes/Hand Recognition Scene.unity
+  - enabled: 0
+    path: Assets/Hand Recognition System/Hand Recognition Scene.unity
     guid: 8920a4aed85f742309b02a410b8d1343
+  - enabled: 1
+    path: Assets/SpellsAndHandsSystem/SpellsWithHands.unity
+    guid: 45e084c755184014ea4c7ebd14e4e562
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1054e1c52824d47838c0f071e877c8b4, type: 2}

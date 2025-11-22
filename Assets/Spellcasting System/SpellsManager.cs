@@ -29,7 +29,7 @@ namespace Spellcasting_System
             if (Time.time < nextCastTime)
                 return; // still cooling down
            
-            var projectile = spell.Cast(castPoint);
+            var projectile = spell.Cast(castPoint.transform);
             var spellProj = projectile.GetComponent<SpellBehaviour>();
             spellProj?.Init(spell, castPoint);
             nextCastTime = Time.time + spell.cooldown;

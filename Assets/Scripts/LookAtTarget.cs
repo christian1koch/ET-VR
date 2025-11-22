@@ -17,7 +17,7 @@ namespace DefaultNamespace
             this.AssertField(_target, nameof(_target));
         }
 
-        protected virtual void LateUpdate()
+        protected virtual void Update()
         {
             Vector3 dirToTarget = (_target.position - _toRotate.position).normalized;
             _toRotate.LookAt(_toRotate.position - dirToTarget, Vector3.up);
