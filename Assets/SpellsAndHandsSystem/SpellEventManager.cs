@@ -5,17 +5,23 @@ public class SpellEventManager : MonoBehaviour
 {
     
     [SerializeField] private RecognitionSystem recognitionSystem;
+    private IRecognitionSystem _recognitionSystem;
     public event Action<int> onSpellCast;
     private int selectedSpell = 0;
 
+    private void Awake()
+    {
+        _recognitionSystem = recognitionSystem;
+    }
+
     private void OnEnable()
     {
-        recognitionSystem.OnRecognized += SetSelectedSpell;
+        _recognitionSystem.OnRecognized += SetSelectedSpell;
     }
 
     private void OnDisable()
     {
-        recognitionSystem.OnRecognized -= SetSelectedSpell;
+        _recognitionSystem.OnRecognized -= SetSelectedSpell;
     }
 
     void SetSelectedSpell(int spellNumber)

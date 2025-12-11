@@ -3,7 +3,7 @@ using Oculus.Interaction.PoseDetection;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RecognitionSystem : MonoBehaviour
+public class RecognitionSystem : MonoBehaviour, IRecognitionSystem
 {
     public ShapeRecognizer recognizedPose = null;
     public event Action<int> OnRecognized;
