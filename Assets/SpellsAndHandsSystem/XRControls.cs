@@ -115,6 +115,54 @@ public partial class @XRControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""RightHand"",
+            ""id"": ""20564c70-b30f-4067-bc28-a628f97022b8"",
+            ""actions"": [
+                {
+                    ""name"": ""Next Spell"",
+                    ""type"": ""Button"",
+                    ""id"": ""588e626b-e4b6-4767-9538-5cc524f81af0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Previous Spell"",
+                    ""type"": ""Button"",
+                    ""id"": ""9eacfa78-844a-4bad-8605-167b81a3f32c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""bdfdf516-e9fb-41ff-a2be-b264b2d1bee6"",
+                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next Spell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4adc1955-913a-4856-90f5-212361ba7f5a"",
+                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Previous Spell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -122,11 +170,16 @@ public partial class @XRControls: IInputActionCollection2, IDisposable
         // LeftHand
         m_LeftHand = asset.FindActionMap("LeftHand", throwIfNotFound: true);
         m_LeftHand_Trigger = m_LeftHand.FindAction("Trigger", throwIfNotFound: true);
+        // RightHand
+        m_RightHand = asset.FindActionMap("RightHand", throwIfNotFound: true);
+        m_RightHand_NextSpell = m_RightHand.FindAction("Next Spell", throwIfNotFound: true);
+        m_RightHand_PreviousSpell = m_RightHand.FindAction("Previous Spell", throwIfNotFound: true);
     }
 
     ~@XRControls()
     {
         UnityEngine.Debug.Assert(!m_LeftHand.enabled, "This will cause a leak and performance issues, XRControls.LeftHand.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_RightHand.enabled, "This will cause a leak and performance issues, XRControls.RightHand.Disable() has not been called.");
     }
 
     /// <summary>
@@ -294,6 +347,113 @@ public partial class @XRControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="LeftHandActions" /> instance referencing this action map.
     /// </summary>
     public LeftHandActions @LeftHand => new LeftHandActions(this);
+
+    // RightHand
+    private readonly InputActionMap m_RightHand;
+    private List<IRightHandActions> m_RightHandActionsCallbackInterfaces = new List<IRightHandActions>();
+    private readonly InputAction m_RightHand_NextSpell;
+    private readonly InputAction m_RightHand_PreviousSpell;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "RightHand".
+    /// </summary>
+    public struct RightHandActions
+    {
+        private @XRControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public RightHandActions(@XRControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "RightHand/NextSpell".
+        /// </summary>
+        public InputAction @NextSpell => m_Wrapper.m_RightHand_NextSpell;
+        /// <summary>
+        /// Provides access to the underlying input action "RightHand/PreviousSpell".
+        /// </summary>
+        public InputAction @PreviousSpell => m_Wrapper.m_RightHand_PreviousSpell;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_RightHand; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="RightHandActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(RightHandActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="RightHandActions" />
+        public void AddCallbacks(IRightHandActions instance)
+        {
+            if (instance == null || m_Wrapper.m_RightHandActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_RightHandActionsCallbackInterfaces.Add(instance);
+            @NextSpell.started += instance.OnNextSpell;
+            @NextSpell.performed += instance.OnNextSpell;
+            @NextSpell.canceled += instance.OnNextSpell;
+            @PreviousSpell.started += instance.OnPreviousSpell;
+            @PreviousSpell.performed += instance.OnPreviousSpell;
+            @PreviousSpell.canceled += instance.OnPreviousSpell;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="RightHandActions" />
+        private void UnregisterCallbacks(IRightHandActions instance)
+        {
+            @NextSpell.started -= instance.OnNextSpell;
+            @NextSpell.performed -= instance.OnNextSpell;
+            @NextSpell.canceled -= instance.OnNextSpell;
+            @PreviousSpell.started -= instance.OnPreviousSpell;
+            @PreviousSpell.performed -= instance.OnPreviousSpell;
+            @PreviousSpell.canceled -= instance.OnPreviousSpell;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="RightHandActions.UnregisterCallbacks(IRightHandActions)" />.
+        /// </summary>
+        /// <seealso cref="RightHandActions.UnregisterCallbacks(IRightHandActions)" />
+        public void RemoveCallbacks(IRightHandActions instance)
+        {
+            if (m_Wrapper.m_RightHandActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="RightHandActions.AddCallbacks(IRightHandActions)" />
+        /// <seealso cref="RightHandActions.RemoveCallbacks(IRightHandActions)" />
+        /// <seealso cref="RightHandActions.UnregisterCallbacks(IRightHandActions)" />
+        public void SetCallbacks(IRightHandActions instance)
+        {
+            foreach (var item in m_Wrapper.m_RightHandActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_RightHandActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="RightHandActions" /> instance referencing this action map.
+    /// </summary>
+    public RightHandActions @RightHand => new RightHandActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "LeftHand" which allows adding and removing callbacks.
     /// </summary>
@@ -308,5 +468,27 @@ public partial class @XRControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTrigger(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "RightHand" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="RightHandActions.AddCallbacks(IRightHandActions)" />
+    /// <seealso cref="RightHandActions.RemoveCallbacks(IRightHandActions)" />
+    public interface IRightHandActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Next Spell" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNextSpell(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Previous Spell" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPreviousSpell(InputAction.CallbackContext context);
     }
 }

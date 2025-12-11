@@ -3,25 +3,33 @@ using UnityEngine;
 
 public class SpellEventManager : MonoBehaviour
 {
+    [SerializeField] private RecognitionSystem handRecognitionSystem;
+    [SerializeField] private ControllerRecognitionSystem controllerRecognitionSystem;
     
-    [SerializeField] private RecognitionSystem recognitionSystem;
-    private IRecognitionSystem _recognitionSystem;
+    private IRecognitionSystem recognitionSystem;
     public event Action<int> onSpellCast;
     private int selectedSpell = 0;
 
     private void Awake()
     {
-        _recognitionSystem = recognitionSystem;
+        // Choose which system to use (prioritize hand recognition if assigned)
+        recognitionSystem = handRecognitionSystem != null ? handRecognitionSystem : (IRecognitionSystem)controllerRecognitionSystem;
     }
 
     private void OnEnable()
     {
-        _recognitionSystem.OnRecognized += SetSelectedSpell;
+        if (recognitionSystem != null)
+        {
+            recognitionSystem.OnRecognized += SetSelectedSpell;
+        }
     }
 
     private void OnDisable()
     {
-        _recognitionSystem.OnRecognized -= SetSelectedSpell;
+        if (recognitionSystem != null)
+        {
+            recognitionSystem.OnRecognized -= SetSelectedSpell;
+        }
     }
 
     void SetSelectedSpell(int spellNumber)

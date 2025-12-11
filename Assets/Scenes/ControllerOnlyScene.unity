@@ -119,162 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &13123188 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1748311560217463609, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-  m_PrefabInstance: {fileID: 83112278}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d3ba1860bd34e5489b63eed306d2f5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RecognitionSystem
---- !u!1001 &83112278
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 48961623660746094, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _transformFeatureStateProvider
-      value: 
-      objectReference: {fileID: 1388476824}
-    - target: {fileID: 186320253368255586, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _fingerFeatureStateProvider
-      value: 
-      objectReference: {fileID: 1388476825}
-    - target: {fileID: 1196561985401579511, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _hand
-      value: 
-      objectReference: {fileID: 1644847219}
-    - target: {fileID: 1256051017288853622, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _transformFeatureStateProvider
-      value: 
-      objectReference: {fileID: 1388476824}
-    - target: {fileID: 1748311560217463609, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: onUnityRecognized.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1748311560217463609, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: onUnityRecognized.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1748311560217463609, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: onUnityRecognized.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1403821556}
-    - target: {fileID: 1748311560217463609, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: onUnityRecognized.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1748311560217463609, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: onUnityRecognized.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetText
-      objectReference: {fileID: 0}
-    - target: {fileID: 1748311560217463609, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: onUnityRecognized.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-      objectReference: {fileID: 0}
-    - target: {fileID: 1748311560217463609, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: onUnityRecognized.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1956667120705917980, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: m_Name
-      value: Recognition System
-      objectReference: {fileID: 0}
-    - target: {fileID: 2663744822877641107, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _transformFeatureStateProvider
-      value: 
-      objectReference: {fileID: 1388476824}
-    - target: {fileID: 2832737698724620909, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _transformFeatureStateProvider
-      value: 
-      objectReference: {fileID: 1388476824}
-    - target: {fileID: 2934553905167064881, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _fingerFeatureStateProvider
-      value: 
-      objectReference: {fileID: 1388476825}
-    - target: {fileID: 3063168500526117305, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _hand
-      value: 
-      objectReference: {fileID: 1644847219}
-    - target: {fileID: 3795570510075940549, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _fingerFeatureStateProvider
-      value: 
-      objectReference: {fileID: 1388476825}
-    - target: {fileID: 4384064492670147583, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _hand
-      value: 
-      objectReference: {fileID: 1644847219}
-    - target: {fileID: 5497453865547806353, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _transformFeatureStateProvider
-      value: 
-      objectReference: {fileID: 1388476824}
-    - target: {fileID: 7514903000071201972, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _hand
-      value: 
-      objectReference: {fileID: 1644847219}
-    - target: {fileID: 7984151013918409179, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _fingerFeatureStateProvider
-      value: 
-      objectReference: {fileID: 1388476825}
-    - target: {fileID: 8114724108351553816, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 22.59619
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114724108351553816, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.00002
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114724108351553816, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 46.64663
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114724108351553816, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114724108351553816, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114724108351553816, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114724108351553816, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114724108351553816, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114724108351553816, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114724108351553816, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8236321793983198278, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _fingerFeatureStateProvider
-      value: 
-      objectReference: {fileID: 1388476825}
-    - target: {fileID: 9056204475591274639, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
-      propertyPath: _hand
-      value: 
-      objectReference: {fileID: 1644847219}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 828fb566772206249bfd3a9619b1ab62, type: 3}
 --- !u!1 &166725352
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +648,51 @@ Transform:
   - {fileID: 615207085}
   m_Father: {fileID: 1224091767}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &707069193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 707069195}
+  - component: {fileID: 707069194}
+  m_Layer: 0
+  m_Name: ControllerRecognitionSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &707069194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707069193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce801bc6dee47139d5a60f4f54b9ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControllerRecognitionSystem
+  numOfSpells: 5
+--- !u!4 &707069195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707069193}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.00504, y: 0.02308, z: -0.0932}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &726521467
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +754,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5c843b1f2ad9f478eb58d0664091a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpellEventManager
-  recognitionSystem: {fileID: 13123188}
+  handRecognitionSystem: {fileID: 0}
+  controllerRecognitionSystem: {fileID: 707069194}
 --- !u!4 &783457026
 Transform:
   m_ObjectHideFlags: 0
@@ -1105,6 +995,50 @@ MonoBehaviour:
         - m_Target: {fileID: 783457025}
           m_TargetAssemblyTypeName: SpellEventManager, Assembly-CSharp
           m_MethodName: CastSpell
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Title: Next Spell
+    Button: 0
+    ButtonMode: 0
+    InputActionReference: {fileID: -365669795387748383, guid: 62c78add6d3661d49ade29243075638e, type: 3}
+    CallbackWithContext:
+      m_PersistentCalls:
+        m_Calls: []
+    Callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 707069194}
+          m_TargetAssemblyTypeName: ControllerRecognitionSystem, Assembly-CSharp
+          m_MethodName: IncreaseSpell
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Title: Previous Spell
+    Button: 0
+    ButtonMode: 0
+    InputActionReference: {fileID: 4189745673541117666, guid: 62c78add6d3661d49ade29243075638e, type: 3}
+    CallbackWithContext:
+      m_PersistentCalls:
+        m_Calls: []
+    Callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 707069194}
+          m_TargetAssemblyTypeName: ControllerRecognitionSystem, Assembly-CSharp
+          m_MethodName: DecreaseSpell
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1799,39 +1733,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 166725353}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1388476824 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4423976141364552412, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1161515237}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bffe606b408599b4fad696ddc889a943, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1388476825 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7530589054033680189, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1161515237}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b942c16a6d6a4edaad7c18c7d5762cdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1403821556 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 324034569195484752, guid: 99558f1cc5e861a488b1b11f6ee8c954, type: 3}
-  m_PrefabInstance: {fileID: 2657283308477959729}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!4 &1416394149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7834255314859882876, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
@@ -2028,17 +1929,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1644847219 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5300513996942578409, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1161515237}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a379f34d4f4f2e408d34f14bfb753ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1828875504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,9 +2473,9 @@ SceneRoots:
   - {fileID: 1224091767}
   - {fileID: 914494361}
   - {fileID: 1500227467}
-  - {fileID: 83112278}
   - {fileID: 1604814052}
   - {fileID: 986153808}
   - {fileID: 783457026}
   - {fileID: 4069726412543264387}
   - {fileID: 805707073}
+  - {fileID: 707069195}

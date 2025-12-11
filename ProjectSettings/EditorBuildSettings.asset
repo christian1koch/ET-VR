@@ -21,6 +21,7 @@ EditorBuildSettings:
     path: Assets/SpellsAndHandsSystem/SpellsWithHands.unity
     guid: 45e084c755184014ea4c7ebd14e4e562
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1054e1c52824d47838c0f071e877c8b4, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 24411475cc5e241ceb3b68fc9b5d9b66, type: 2}
