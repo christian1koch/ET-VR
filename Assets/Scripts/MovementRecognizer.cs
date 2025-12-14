@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using PDollarGestureRecognizer;
 using UnityEngine;
@@ -6,7 +7,15 @@ using UnityEngine.XR.Interaction.Toolkit;
 using System.IO;
 using UnityEngine.Events;
 
-public class MovementRecognizer : MonoBehaviour
+public enum SketchType
+{
+    Circle,
+    Square,
+    Star,
+    Triangle
+}
+
+public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
 {
     [Header("Input Settings")]
     [SerializeField, Tooltip("The XR node to track input from (e.g., LeftHand or RightHand)")]
@@ -39,9 +48,9 @@ public class MovementRecognizer : MonoBehaviour
     [SerializeField, Tooltip("Prefab to instantiate at each recorded position for debugging")]
     private GameObject debugCubePrefab;
 
-    [Header("Events")]
-    [Tooltip("Event triggered when a gesture is recognized, passes the gesture name")]
-    public UnityEvent<string> OnGestureRecognized;
+    // Events
+    // Event triggered when a gesture is recognized, passes the SketchType enum
+    public event Action<int> OnRecognized;
 
     // Private fields
     private bool isMoving;
@@ -118,7 +127,16 @@ public class MovementRecognizer : MonoBehaviour
             Debug.Log($"Recognized gesture: {result.GestureClass} with score {result.Score}");
             if (result.Score >= recognitionThreshold)
             {
-                OnGestureRecognized?.Invoke(result.GestureClass);
+                // Parse lowercase gesture name to SketchType enum (case-insensitive)
+                if (Enum.TryParse(result.GestureClass, true, out SketchType sketchType))
+                {
+                    OnRecognized?.Invoke((int)sketchType);
+                    Debug.Log($"Successfully recognized as {sketchType}");
+                }
+                else
+                {
+                    Debug.LogWarning($"Gesture '{result.GestureClass}' does not match any SketchType enum value");
+                }
             }
         }
     }
@@ -136,4 +154,5 @@ public class MovementRecognizer : MonoBehaviour
             }
         }
     }
+    
 }
