@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using PDollarGestureRecognizer;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using System.IO;
 
 public class MovementRecognizer : MonoBehaviour
 {
@@ -12,14 +14,22 @@ public class MovementRecognizer : MonoBehaviour
     public Transform movementSource;
 
     public GameObject debugCubePrefab;
-    
+    public bool creationMode = true;
+    public string newGestureName = "New Gesture";
     public float newPositionThresholdDistance = 0.01f;
+    private List<Gesture> trainingSet = new List<Gesture>();
     private List<Vector3> positionList = new List<Vector3>();
+    
+    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        string[] gestureFiles = Directory.GetFiles(Application.dataPath + "/Resources/GestureSet/", "*.xml");
+        foreach (string file in gestureFiles)
+        {
+            trainingSet.Add(GestureIO.ReadGestureFromFile(file));
+        }
     }
 
     // Update is called once per frame
@@ -33,12 +43,12 @@ public class MovementRecognizer : MonoBehaviour
             StartMovement();
         }
         // Ending the Movement
-        else if (isMoving && isPressed)
+        else if (isMoving && !isPressed)
         {
             EndMovement();
         }
         // Updating the Movement
-        else if (!isMoving && isPressed)
+        else if (isMoving && isPressed)
         {
             UpdateMovement();
         }
@@ -46,9 +56,9 @@ public class MovementRecognizer : MonoBehaviour
 
     void StartMovement()
     {
+        positionList.Clear();
         Debug.Log("Starting movement");
         isMoving = true;
-        positionList.Clear();
         positionList.Add(movementSource.position);
         if (debugCubePrefab)
         {
@@ -59,6 +69,28 @@ public class MovementRecognizer : MonoBehaviour
     {
         Debug.Log("Ending movement");
         isMoving = false;
+        // Create the gesture from the position List
+        Point[] pointArray = new Point[positionList.Count];
+
+        for (int i = 0; i < positionList.Count; i++)
+        {
+            Vector2 screenPoint = Camera.main.WorldToScreenPoint(positionList[i]);
+            pointArray[i] = new Point(screenPoint.x, screenPoint.y, 0);
+        }
+        Gesture newGesture = new Gesture(pointArray);
+        if (creationMode) 
+        {
+            newGesture.Name = newGestureName;
+            trainingSet.Add(newGesture);
+            Debug.Log($"Added new gesture: {newGestureName} with {pointArray.Length} points.");
+            string fileName = Application.dataPath + "/Resources/GestureSet/" + newGestureName + ".xml";
+            GestureIO.WriteGesture(pointArray, newGestureName, fileName);
+        }
+        else
+        {
+            Result result = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
+            Debug.Log($"Recognized gesture: {result.GestureClass} with score {result.Score}");
+        }
     }
 
     void UpdateMovement()
