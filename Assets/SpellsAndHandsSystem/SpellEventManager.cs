@@ -5,6 +5,8 @@ public class SpellEventManager : MonoBehaviour
 {
     [SerializeField] private RecognitionSystem handRecognitionSystem;
     [SerializeField] private ControllerRecognitionSystem controllerRecognitionSystem;
+    [SerializeField] private MovementRecognizer sketchRecognitionSystem;
+    [SerializeField] private bool castOnRecognize = true;
     
     private IRecognitionSystem recognitionSystem;
     public event Action<int> onSpellCast;
@@ -13,7 +15,22 @@ public class SpellEventManager : MonoBehaviour
     private void Awake()
     {
         // Choose which system to use (prioritize hand recognition if assigned)
-        recognitionSystem = handRecognitionSystem != null ? handRecognitionSystem : (IRecognitionSystem)controllerRecognitionSystem;
+        if (handRecognitionSystem != null)
+        {
+            recognitionSystem = handRecognitionSystem;
+        }
+        else if (controllerRecognitionSystem != null)
+        {
+            recognitionSystem = controllerRecognitionSystem;
+        }
+        else if (sketchRecognitionSystem != null)
+        {
+            recognitionSystem = sketchRecognitionSystem;
+        }
+        else
+        {
+            Debug.LogError("No recognition system assigned to SpellEventManager.");
+        }
     }
 
     private void OnEnable()
@@ -35,6 +52,10 @@ public class SpellEventManager : MonoBehaviour
     void SetSelectedSpell(int spellNumber)
     {
         selectedSpell = spellNumber;
+        if (castOnRecognize)
+        {
+            CastSpell();
+        }
     }
 
     public void CastSpell()
