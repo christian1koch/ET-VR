@@ -8,22 +8,45 @@ using UnityEngine.Events;
 
 public class MovementRecognizer : MonoBehaviour
 {
-    public XRNode inputSource;
-    public InputHelpers.Button inputButton;
-    public float inputThreshold = 0.1f;
-    private bool isMoving = false;
-    public Transform movementSource;
+    [Header("Input Settings")]
+    [SerializeField, Tooltip("The XR node to track input from (e.g., LeftHand or RightHand)")]
+    private XRNode inputSource;
+    
+    [SerializeField, Tooltip("The button to use for gesture input")]
+    private InputHelpers.Button inputButton;
+    
+    [SerializeField, Tooltip("Threshold for button press detection")]
+    private float inputThreshold = 0.1f;
+    
+    [SerializeField, Tooltip("Transform to track movement from (usually the controller or hand)")]
+    private Transform movementSource;
 
-    public float recognitionThreshold = 0.8f;
+    [Header("Recognition Settings")]
+    [SerializeField, Tooltip("Minimum score required to recognize a gesture (0-1)")]
+    private float recognitionThreshold = 0.8f;
+    
+    [SerializeField, Tooltip("Minimum distance between recorded positions")]
+    private float newPositionThresholdDistance = 0.01f;
 
-    public GameObject debugCubePrefab;
-    public bool creationMode = false;
-    public string newGestureName = "New Gesture";
-    public float newPositionThresholdDistance = 0.01f;
+    [Header("Creation Mode")]
+    [SerializeField, Tooltip("Enable to create and save new gestures instead of recognizing")]
+    private bool creationMode;
+    
+    [SerializeField, Tooltip("Name for the new gesture when in creation mode")]
+    private string newGestureName = "New Gesture";
+
+    [Header("Debug")]
+    [SerializeField, Tooltip("Prefab to instantiate at each recorded position for debugging")]
+    private GameObject debugCubePrefab;
+
+    [Header("Events")]
+    [Tooltip("Event triggered when a gesture is recognized, passes the gesture name")]
+    public UnityEvent<string> OnGestureRecognized;
+
+    // Private fields
+    private bool isMoving;
     private List<Gesture> trainingSet = new List<Gesture>();
     private List<Vector3> positionList = new List<Vector3>();
-    
-    public UnityEvent<string> OnGestureRecognized;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
