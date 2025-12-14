@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using System.IO;
+using UnityEngine.Events;
 
 public class MovementRecognizer : MonoBehaviour
 {
@@ -13,14 +14,16 @@ public class MovementRecognizer : MonoBehaviour
     private bool isMoving = false;
     public Transform movementSource;
 
+    public float recognitionThreshold = 0.8f;
+
     public GameObject debugCubePrefab;
-    public bool creationMode = true;
+    public bool creationMode = false;
     public string newGestureName = "New Gesture";
     public float newPositionThresholdDistance = 0.01f;
     private List<Gesture> trainingSet = new List<Gesture>();
     private List<Vector3> positionList = new List<Vector3>();
     
-    
+    public UnityEvent<string> OnGestureRecognized;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -90,6 +93,10 @@ public class MovementRecognizer : MonoBehaviour
         {
             Result result = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
             Debug.Log($"Recognized gesture: {result.GestureClass} with score {result.Score}");
+            if (result.Score >= recognitionThreshold)
+            {
+                OnGestureRecognized?.Invoke(result.GestureClass);
+            }
         }
     }
 
