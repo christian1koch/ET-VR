@@ -6,6 +6,7 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using System.IO;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public enum SketchType
 {
@@ -57,6 +58,8 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
     private List<Gesture> trainingSet = new List<Gesture>();
     private List<Vector3> positionList = new List<Vector3>();
     
+    public Vector3 centerPosition;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -104,6 +107,11 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
     {
         Debug.Log("Ending movement");
         isMoving = false;
+        
+        // Calculate the center of the gesture
+       
+        Debug.Log($"Gesture center: {centerPosition}");
+        
         // Create the gesture from the position List
         Point[] pointArray = new Point[positionList.Count];
 
@@ -148,11 +156,26 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
         if (Vector3.Distance(lastPosition, movementSource.position) > newPositionThresholdDistance)
         {
             positionList.Add(movementSource.position);
+            centerPosition = CalculateGestureCenter();
             if (debugCubePrefab)
             {
                 Destroy(Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity), 3f);
             }
         }
+    }
+    
+    private Vector3 CalculateGestureCenter()
+    {
+        if (positionList.Count == 0)
+            return Vector3.zero;
+
+        Vector3 sum = Vector3.zero;
+        foreach (Vector3 position in positionList)
+        {
+            sum += position;
+        }
+        
+        return sum / positionList.Count;
     }
     
 }
