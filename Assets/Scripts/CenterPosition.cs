@@ -11,7 +11,7 @@ public class CenterPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (movementRecognizer != null)
+        if (movementRecognizer)
         {
             // Use the center position from the gesture, or placeholder if it's zero
             Vector3 targetPosition = movementRecognizer.centerPosition;
