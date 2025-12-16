@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using System.IO;
-using UnityEngine.Events;
-using UnityEngine.UIElements;
+using UnityEngine.Serialization;
 
 public enum SketchType
 {
@@ -19,6 +18,12 @@ public enum SketchType
 public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
 {
     [Header("Input Settings")]
+    [SerializeField, Tooltip("Use hand tracking with pinch instead of controller")]
+    private bool useHandTracking;
+    
+    [SerializeField, Tooltip("OVRHand component for right hand (only used in hand tracking mode)")]
+    private OVRHand rightHand;
+    
     [SerializeField, Tooltip("The XR node to track input from (e.g., LeftHand or RightHand)")]
     private XRNode inputSource;
     
@@ -28,8 +33,14 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
     [SerializeField, Tooltip("Threshold for button press detection")]
     private float inputThreshold = 0.1f;
     
-    [SerializeField, Tooltip("Transform to track movement from (usually the controller or hand)")]
+    [SerializeField, Tooltip("Pinch strength threshold for hand tracking (0-1)")]
+    private float pinchThreshold = 0.8f;
+    
+    [SerializeField, Tooltip("Transform to track movement from controller")]
     private Transform movementSource;
+    
+    [SerializeField, Tooltip("Transform to track movement from hand")]
+    private Transform handMovementSource;
 
     [Header("Recognition Settings")]
     [SerializeField, Tooltip("Minimum score required to recognize a gesture (0-1)")]
@@ -69,12 +80,28 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
         {
             trainingSet.Add(GestureIO.ReadGestureFromFile(file));
         }
+        if (useHandTracking && handMovementSource != null)
+        {
+            movementSource = handMovementSource;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        InputHelpers.IsPressed(InputDevices.GetDeviceAtXRNode(inputSource), inputButton, out bool isPressed, inputThreshold);
+        bool isPressed = false;
+        
+        if (useHandTracking && rightHand != null)
+        {
+            // Hand tracking mode - check pinch strength
+            float pinchStrength = rightHand.GetFingerPinchStrength(OVRHand.HandFinger.Index);
+            isPressed = pinchStrength > pinchThreshold;
+        }
+        else
+        {
+            // Controller mode
+            InputHelpers.IsPressed(InputDevices.GetDeviceAtXRNode(inputSource), inputButton, out isPressed, inputThreshold);
+        }
         
         // Start the movement
         if (!isMoving && isPressed)
