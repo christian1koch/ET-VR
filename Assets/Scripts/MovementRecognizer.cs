@@ -57,6 +57,7 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
     private bool isMoving;
     private List<Gesture> trainingSet = new List<Gesture>();
     private List<Vector3> positionList = new List<Vector3>();
+    private GameObject debugCubeInstance;
     
     public Vector3 centerPosition;
     
@@ -98,15 +99,22 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
         Debug.Log("Starting movement");
         isMoving = true;
         positionList.Add(movementSource.position);
-        if (debugCubePrefab)
+        if (debugCubePrefab && debugCubeInstance == null)
         {
-            Destroy(Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity), 3f);
+            debugCubeInstance = Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity);
         }
     }
     void EndMovement()
     {
         Debug.Log("Ending movement");
         isMoving = false;
+        
+        // Destroy the debug cube when movement ends
+        if (debugCubeInstance != null)
+        {
+            Destroy(debugCubeInstance);
+            debugCubeInstance = null;
+        }
         
         // Calculate the center of the gesture
        
@@ -157,10 +165,12 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
         {
             positionList.Add(movementSource.position);
             centerPosition = CalculateGestureCenter();
-            if (debugCubePrefab)
-            {
-                Destroy(Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity), 3f);
-            }
+        }
+        
+        // Update debug cube position to follow movement source
+        if (debugCubeInstance != null)
+        {
+            debugCubeInstance.transform.position = movementSource.position;
         }
     }
     
