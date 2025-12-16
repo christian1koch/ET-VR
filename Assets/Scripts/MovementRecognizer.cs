@@ -9,10 +9,10 @@ using UnityEngine.Serialization;
 
 public enum SketchType
 {
-    Circle,
     Square,
     Star,
-    Triangle
+    Triangle,
+    Circle,
 }
 
 public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
