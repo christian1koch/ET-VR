@@ -16,6 +16,9 @@ namespace Spellcasting_System
         public float speed = 25f;
         public float cooldown = 1f;
         public float manaCost = 10f;
+        
+        [Header("Target")]
+        public string targetTag = "Enemy";
 
         // Called by SpellCaster when cast
         public virtual GameObject Cast(Transform castPoint)

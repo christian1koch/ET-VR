@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3254515905695088708}
   - component: {fileID: 5647744301677015156}
   - component: {fileID: 153244423778363117}
-  - component: {fileID: -5227481264516148525}
+  - component: {fileID: 5615927106621226983}
   m_Layer: 0
   m_Name: MagicPyramid
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3903108538087448977}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.005, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,8 +131,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &-5227481264516148525
-MeshCollider:
+--- !u!135 &5615927106621226983
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -149,7 +149,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: 1704b8ddddc9dd24ab790e6e3445222e, type: 3}
+  serializedVersion: 3
+  m_Radius: 0.012
+  m_Center: {x: 0, y: 0, z: -0.005}

@@ -36,8 +36,15 @@ namespace Spellcasting_System
         private void OnCollisionEnter(Collision collision)
         {
             if (sourceSpell == null) return;
-            
-            Destroy(gameObject);
+
+            // Check if the collision object has the matching tag
+            if (!string.IsNullOrEmpty(sourceSpell.targetTag) && 
+                collision.gameObject.CompareTag(sourceSpell.targetTag))
+            {
+                Destroy(collision.gameObject); // Destroy the target
+            }
+
+            Destroy(gameObject); // Destroy the projectile
         }
     }
 }

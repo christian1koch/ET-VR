@@ -19,3 +19,4 @@ MonoBehaviour:
   speed: 10
   cooldown: 1
   manaCost: 10
+  targetTag: triangle_enemy
