@@ -24,6 +24,13 @@ namespace Spellcasting_System
         public virtual GameObject Cast(Transform castPoint)
         {
             if (projectilePrefab == null) return null;
+            
+            // Track spell fired
+            if (SpellAnalytics.Instance != null)
+            {
+                SpellAnalytics.Instance.RecordSpellFired();
+            }
+            
             // Spawn projectile
             var projectile = Instantiate(projectilePrefab, castPoint.position, castPoint.rotation * projectilePrefab.transform.localRotation);
             return projectile;

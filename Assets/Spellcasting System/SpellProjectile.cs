@@ -6,6 +6,7 @@ namespace Spellcasting_System
     {
         private Spell sourceSpell;
         private float spawnTime;
+        private bool _hasHit = false;
 
         // Initialize with data from the ScriptableObject
         public void Init(Spell spell, Transform castPoint)
@@ -35,12 +36,20 @@ namespace Spellcasting_System
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (sourceSpell == null) return;
+            if (sourceSpell == null || _hasHit) return;
 
             // Check if the collision object has the matching tag
             if (!string.IsNullOrEmpty(sourceSpell.targetTag) && 
                 collision.gameObject.CompareTag(sourceSpell.targetTag))
             {
+                _hasHit = true;
+                
+                // Track hit
+                if (SpellAnalytics.Instance != null)
+                {
+                    SpellAnalytics.Instance.RecordSpellHit();
+                }
+                
                 Destroy(collision.gameObject); // Destroy the target
             }
 
