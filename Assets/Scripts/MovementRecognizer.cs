@@ -47,7 +47,7 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
     private float recognitionThreshold = 0.8f;
     
     [SerializeField, Tooltip("Minimum distance between recorded positions")]
-    private float newPositionThresholdDistance = 0.01f;
+    private float newPositionThresholdDistance = 0.005f; // Smaller threshold to capture more detail
 
     [Header("Creation Mode")]
     [SerializeField, Tooltip("Enable to create and save new gestures instead of recognizing")]
@@ -144,17 +144,29 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
         }
         
         // Calculate the center of the gesture
-       
+        centerPosition = CalculateGestureCenter();
         Debug.Log($"Gesture center: {centerPosition}");
         
         // Create the gesture from the position List
         Point[] pointArray = new Point[positionList.Count];
 
+        // Calculate a local coordinate system based on the gesture
+        Vector3 center = centerPosition;
+        
+        // Use camera's orientation for the projection plane
+        Camera cam = Camera.main;
+        Vector3 up = cam != null ? cam.transform.up : Vector3.up;
+        Vector3 right = cam != null ? cam.transform.right : Vector3.right;
+
         for (int i = 0; i < positionList.Count; i++)
         {
-            Vector2 screenPoint = Camera.main.WorldToScreenPoint(positionList[i]);
-            pointArray[i] = new Point(screenPoint.x, screenPoint.y, 0);
+            // Project onto a plane perpendicular to the camera
+            Vector3 localPos = positionList[i] - center;
+            float x = Vector3.Dot(localPos, right);
+            float y = Vector3.Dot(localPos, up);
+            pointArray[i] = new Point(x * 1000f, y * 1000f, 0); // Scale up for better precision
         }
+
         Gesture newGesture = new Gesture(pointArray);
         if (creationMode) 
         {
