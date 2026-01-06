@@ -10427,7 +10427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spellcasting_System.SpellAnalytics
   logOnDestroy: 1
-  logStatsKey: 282
 --- !u!1 &1853018842
 GameObject:
   m_ObjectHideFlags: 0
@@ -12392,15 +12391,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3563701687487756029, guid: fe4222ecfebc0764ea41bb62b8b410a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.65
+      value: 10.29
       objectReference: {fileID: 0}
     - target: {fileID: 3563701687487756029, guid: fe4222ecfebc0764ea41bb62b8b410a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.05
+      value: 1.76
       objectReference: {fileID: 0}
     - target: {fileID: 3563701687487756029, guid: fe4222ecfebc0764ea41bb62b8b410a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.44
+      value: -1.22
       objectReference: {fileID: 0}
     - target: {fileID: 3563701687487756029, guid: fe4222ecfebc0764ea41bb62b8b410a2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12697,15 +12696,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6865410392215749560, guid: 426bea2ebe0130c44a07e6a57b0101c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.35
+      value: 7.51
       objectReference: {fileID: 0}
     - target: {fileID: 6865410392215749560, guid: 426bea2ebe0130c44a07e6a57b0101c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.69
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 6865410392215749560, guid: 426bea2ebe0130c44a07e6a57b0101c2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.86002
+      value: 4.99
       objectReference: {fileID: 0}
     - target: {fileID: 6865410392215749560, guid: 426bea2ebe0130c44a07e6a57b0101c2, type: 3}
       propertyPath: m_LocalRotation.w
