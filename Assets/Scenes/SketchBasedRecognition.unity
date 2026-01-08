@@ -3552,7 +3552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bed1ed5c90cbf44bb170967e2096f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementRecognizer
-  useHandTracking: 1
+  useHandTracking: 0
   rightHand: {fileID: 505656087}
   inputSource: 5
   inputButton: 4
@@ -3563,7 +3563,7 @@ MonoBehaviour:
   recognitionThreshold: 0.8
   newPositionThresholdDistance: 0.01
   creationMode: 0
-  newGestureName: infinity
+  newGestureName: triangle
   debugCubePrefab: {fileID: 5595346279376412711, guid: dc99e5a22bfe8df42a2cf9b77d32e0c7, type: 3}
   centerPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &711837790
@@ -10427,7 +10427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spellcasting_System.SpellAnalytics
   logOnDestroy: 1
-  logStatsKey: 282
 --- !u!1 &1853018842
 GameObject:
   m_ObjectHideFlags: 0
@@ -12377,6 +12376,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TriangleEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8831938182266059204, guid: 031bff25e147eb04b801eb172530e539, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ecf71a18dc922564ebe0027b14adf5e6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12430,6 +12433,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4944317272060276822, guid: fe4222ecfebc0764ea41bb62b8b410a2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 18496a223546e1f4eb334baedbd3b5d2, type: 2}
     - target: {fileID: 5510758383229288711, guid: fe4222ecfebc0764ea41bb62b8b410a2, type: 3}
       propertyPath: m_Name
       value: CircleEnemy
@@ -12678,6 +12685,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StarEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6306518840141555431, guid: 207fa4e0e7b2abd45be4e6184e73601f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a220ec9297e202249bb9d8b9a094d0ae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12691,6 +12702,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 976524864076858425, guid: 426bea2ebe0130c44a07e6a57b0101c2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f7f1546bfd24e448acdc5f289019f15, type: 2}
     - target: {fileID: 5962701891476885301, guid: 426bea2ebe0130c44a07e6a57b0101c2, type: 3}
       propertyPath: m_Name
       value: CubeEnemy

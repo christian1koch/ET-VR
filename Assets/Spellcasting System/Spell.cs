@@ -1,4 +1,3 @@
-using Oculus.Interaction.Input;
 using UnityEngine;
 
 namespace Spellcasting_System
@@ -19,21 +18,5 @@ namespace Spellcasting_System
         
         [Header("Target")]
         public string targetTag = "Enemy";
-
-        // Called by SpellCaster when cast
-        public virtual GameObject Cast(Transform castPoint)
-        {
-            if (projectilePrefab == null) return null;
-            
-            // Track spell fired
-            if (SpellAnalytics.Instance != null)
-            {
-                SpellAnalytics.Instance.RecordSpellFired();
-            }
-            
-            // Spawn projectile
-            var projectile = Instantiate(projectilePrefab, castPoint.position, castPoint.rotation * projectilePrefab.transform.localRotation);
-            return projectile;
-        }
     }
 }

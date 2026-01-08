@@ -31,10 +31,28 @@ namespace Spellcasting_System
             if (Time.time < nextCastTime)
                 return; // still cooling down
            
-            var projectile = spell.Cast(castPoint.transform);
-            var spellProj = projectile.GetComponent<SpellBehaviour>();
-            spellProj?.Init(spell, castPoint);
+            var projectile = CastSpell(spell, castPoint);
+            if (projectile != null)
+            {
+                var spellProj = projectile.GetComponent<SpellBehaviour>();
+                spellProj?.Init(spell, castPoint);
+            }
             nextCastTime = Time.time + spell.cooldown;
+        }
+
+        private GameObject CastSpell(Spell spell, Transform castPoint)
+        {
+            if (spell.projectilePrefab == null) return null;
+            
+            // Track spell fired
+            if (SpellAnalytics.Instance != null)
+            {
+                SpellAnalytics.Instance.RecordSpellFired();
+            }
+            
+            // Spawn projectile
+            return Object.Instantiate(spell.projectilePrefab, castPoint.position, 
+                castPoint.rotation * spell.projectilePrefab.transform.localRotation);
         }
     }
 }
