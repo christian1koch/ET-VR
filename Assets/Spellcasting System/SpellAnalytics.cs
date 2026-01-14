@@ -11,6 +11,7 @@ namespace Spellcasting_System
         private int _spellsFired;
         private int _spellsHitTarget;
         private Stopwatch _sessionTimer = new Stopwatch();
+        private bool? _isUsingHandTracking;
 
         [SerializeField] private bool logOnDestroy = true;
 
@@ -59,12 +60,21 @@ namespace Spellcasting_System
             _spellsHitTarget++;
         }
         
+        public void SetTrackingMode(bool isUsingHandTracking)
+        {
+            _isUsingHandTracking = isUsingHandTracking;
+        }
+        
         public void LogStatistics()
         {
             int spellsMissed = _spellsFired - _spellsHitTarget;
             float hitRate = _spellsFired > 0 ? (_spellsHitTarget / (float)_spellsFired * 100) : 0;
+            string trackingMode = _isUsingHandTracking.HasValue 
+                ? (_isUsingHandTracking.Value ? "Hand Tracking" : "Controller Tracking")
+                : "Unknown";
             
             UnityEngine.Debug.Log($"=== SPELL ANALYTICS ===\n" +
+                $"Input Mode: {trackingMode}\n" +
                 $"Spells Fired: {_spellsFired}\n" +
                 $"Spells Hit Target: {_spellsHitTarget}\n" +
                 $"Spells Missed: {spellsMissed}\n" +

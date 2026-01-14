@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using PDollarGestureRecognizer;
+using Spellcasting_System;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -83,6 +84,12 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
         if (useHandTracking && handMovementSource != null)
         {
             movementSource = handMovementSource;
+        }
+        
+        // Report tracking mode to SpellAnalytics
+        if (SpellAnalytics.Instance != null)
+        {
+            SpellAnalytics.Instance.SetTrackingMode(useHandTracking);
         }
     }
 
