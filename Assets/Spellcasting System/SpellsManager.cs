@@ -31,23 +31,23 @@ namespace Spellcasting_System
             if (Time.time < nextCastTime)
                 return; // still cooling down
            
-            var projectile = CastSpell(spell, castPoint);
+            var projectile = CastSpell(spell, castPoint, (SketchType)spellNum);
             if (projectile != null)
             {
                 var spellProj = projectile.GetComponent<SpellBehaviour>();
-                spellProj?.Init(spell, castPoint);
+                spellProj?.Init(spell, castPoint, (SketchType)spellNum);
             }
             nextCastTime = Time.time + spell.cooldown;
         }
 
-        private GameObject CastSpell(Spell spell, Transform castPoint)
+        private GameObject CastSpell(Spell spell, Transform castPoint, SketchType spellType)
         {
             if (spell.projectilePrefab == null) return null;
             
             // Track spell fired
             if (SpellAnalytics.Instance != null)
             {
-                SpellAnalytics.Instance.RecordSpellFired();
+                SpellAnalytics.Instance.RecordSpellFired(spellType);
             }
             
             // Spawn projectile

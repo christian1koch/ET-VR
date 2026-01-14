@@ -7,12 +7,14 @@ namespace Spellcasting_System
         private Spell sourceSpell;
         private float spawnTime;
         private bool _hasHit = false;
+        private SketchType _spellType;
 
         // Initialize with data from the ScriptableObject
-        public void Init(Spell spell, Transform castPoint)
+        public void Init(Spell spell, Transform castPoint, SketchType spellType)
         {
             sourceSpell = spell;
             spawnTime = Time.time;
+            _spellType = spellType;
             // Apply velocity
             var rb = GetComponent<Rigidbody>();
                 rb.linearVelocity = castPoint.forward * sourceSpell.speed;
@@ -47,7 +49,7 @@ namespace Spellcasting_System
                 // Track hit
                 if (SpellAnalytics.Instance != null)
                 {
-                    SpellAnalytics.Instance.RecordSpellHit();
+                    SpellAnalytics.Instance.RecordSpellHit(_spellType);
                 }
                 
                 Destroy(collision.gameObject); // Destroy the target

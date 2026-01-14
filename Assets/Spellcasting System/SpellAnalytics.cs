@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 namespace Spellcasting_System
@@ -12,6 +14,10 @@ namespace Spellcasting_System
         private int _spellsHitTarget;
         private Stopwatch _sessionTimer = new Stopwatch();
         private bool? _isUsingHandTracking;
+        
+        // Per-spell-type tracking
+        private Dictionary<SketchType, int> _spellsFiredByType = new Dictionary<SketchType, int>();
+        private Dictionary<SketchType, int> _spellsHitByType = new Dictionary<SketchType, int>();
 
         [SerializeField] private bool logOnDestroy = true;
 
@@ -54,10 +60,26 @@ namespace Spellcasting_System
         {
             _spellsFired++;
         }
+        
+        public void RecordSpellFired(SketchType spellType)
+        {
+            _spellsFired++;
+            if (!_spellsFiredByType.ContainsKey(spellType))
+                _spellsFiredByType[spellType] = 0;
+            _spellsFiredByType[spellType]++;
+        }
 
         public void RecordSpellHit()
         {
             _spellsHitTarget++;
+        }
+        
+        public void RecordSpellHit(SketchType spellType)
+        {
+            _spellsHitTarget++;
+            if (!_spellsHitByType.ContainsKey(spellType))
+                _spellsHitByType[spellType] = 0;
+            _spellsHitByType[spellType]++;
         }
         
         public void SetTrackingMode(bool isUsingHandTracking)
@@ -73,20 +95,42 @@ namespace Spellcasting_System
                 ? (_isUsingHandTracking.Value ? "Hand Tracking" : "Controller Tracking")
                 : "Unknown";
             
-            UnityEngine.Debug.Log($"=== SPELL ANALYTICS ===\n" +
-                $"Input Mode: {trackingMode}\n" +
-                $"Spells Fired: {_spellsFired}\n" +
-                $"Spells Hit Target: {_spellsHitTarget}\n" +
-                $"Spells Missed: {spellsMissed}\n" +
-                $"Hit Rate: {hitRate:F2}%\n" +
-                $"Session Duration: {_sessionTimer.Elapsed:hh\\:mm\\:ss}\n" +
-                $"======================");
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("=== SPELL ANALYTICS ===");
+            sb.AppendLine($"Input Mode: {trackingMode}");
+            sb.AppendLine($"Session Duration: {_sessionTimer.Elapsed:hh\\:mm\\:ss}");
+            sb.AppendLine();
+            sb.AppendLine("--- Overall Stats ---");
+            sb.AppendLine($"Spells Fired: {_spellsFired}");
+            sb.AppendLine($"Spells Hit Target: {_spellsHitTarget}");
+            sb.AppendLine($"Spells Missed: {spellsMissed}");
+            sb.AppendLine($"Hit Rate: {hitRate:F2}%");
+            sb.AppendLine();
+            sb.AppendLine("--- Per Spell Type ---");
+            
+            // Log stats for each spell type
+            foreach (SketchType spellType in System.Enum.GetValues(typeof(SketchType)))
+            {
+                int fired = _spellsFiredByType.ContainsKey(spellType) ? _spellsFiredByType[spellType] : 0;
+                int hit = _spellsHitByType.ContainsKey(spellType) ? _spellsHitByType[spellType] : 0;
+                int missed = fired - hit;
+                
+                sb.AppendLine($"{spellType}:");
+                sb.AppendLine($"  Casted: {fired}");
+                sb.AppendLine($"  Missed: {missed}");
+            }
+            
+            sb.AppendLine("======================");
+            
+            UnityEngine.Debug.Log(sb.ToString());
         }
 
         public void ResetStatistics()
         {
             _spellsFired = 0;
             _spellsHitTarget = 0;
+            _spellsFiredByType.Clear();
+            _spellsHitByType.Clear();
             _sessionTimer.Restart();
             UnityEngine.Debug.Log("SpellAnalytics reset.");
         }

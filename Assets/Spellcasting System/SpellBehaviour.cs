@@ -4,6 +4,6 @@ namespace Spellcasting_System
 {
     public interface SpellBehaviour
     {
-        public void Init(Spell spell, Transform castPoint);
+        public void Init(Spell spell, Transform castPoint, SketchType spellType);
     }
 }
