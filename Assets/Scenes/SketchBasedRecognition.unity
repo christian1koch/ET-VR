@@ -1844,39 +1844,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 221340900}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &372992663 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3903482225804038116, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1161515237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &372992665 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7218948594749983592, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1161515237}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372992663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8733ebe23f85185428441f8c331788fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &372992667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372992663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e654f4e049a275f4abd192bae13fa113, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Oculus.Interaction.Locomotion.FlyingLocomotor
-  _characterController: {fileID: 372992665}
-  _playerOrigin: {fileID: 1224091767}
-  _playerEyes: {fileID: 1995148215}
-  _acceleration: 150
-  _airDamping: 30
 --- !u!1 &387297475
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,11 +2747,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1097850284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &601034198 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3903482226883268838, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1161515237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &612936633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,7 +3558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bed1ed5c90cbf44bb170967e2096f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementRecognizer
-  useHandTracking: 0
+  useHandTracking: 1
   rightHand: {fileID: 505656087}
   inputSource: 5
   inputButton: 4
@@ -4276,22 +4238,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3903482226883268839, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
   m_PrefabInstance: {fileID: 1161515237}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &860636405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601034198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd3fa6da4d7f23d4c8d39ac4a3005dbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FlyingController
-  locomotor: {fileID: 372992667}
-  headTransform: {fileID: 1416394149}
-  flySpeed: 1
-  gravity: 3
 --- !u!1 &867007529
 GameObject:
   m_ObjectHideFlags: 0
@@ -6030,12 +5976,16 @@ PrefabInstance:
       objectReference: {fileID: 1224091765}
     - target: {fileID: 6744807187139327233, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       propertyPath: _handlers.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6744807187139327233, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       propertyPath: '_handlers.Array.data[0]'
       value: 
-      objectReference: {fileID: 372992667}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7218948594749983592, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8839895569409382208, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6050,12 +6000,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4148778239110795873, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1161515240}
-    - targetCorrespondingSourceObject: {fileID: 3903482226883268838, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 860636405}
-    - targetCorrespondingSourceObject: {fileID: 3903482225804038116, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 372992667}
   m_SourcePrefab: {fileID: 100100000, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
 --- !u!4 &1161515238 stripped
 Transform:
@@ -8036,11 +7980,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1208452379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1416394149 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7834255314859882876, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1161515237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1419721584
 GameObject:
   m_ObjectHideFlags: 0
