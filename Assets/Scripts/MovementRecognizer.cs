@@ -205,7 +205,6 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
 
     void UpdateMovement()
     {
-        Debug.Log("Moving...");
         Vector3 lastPosition = positionList[positionList.Count - 1];
         if (Vector3.Distance(lastPosition, movementSource.position) > newPositionThresholdDistance)
         {
