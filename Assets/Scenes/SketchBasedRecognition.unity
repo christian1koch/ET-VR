@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 15773337}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.41, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4363,7 +4363,7 @@ GameObject:
   m_Layer: 0
   m_Name: ControllerRecognitionSystem
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4394,7 +4394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bed1ed5c90cbf44bb170967e2096f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementRecognizer
-  useHandTracking: 1
+  useHandTracking: 0
   rightHand: {fileID: 505656087}
   inputSource: 5
   inputButton: 4
@@ -6908,6 +6908,10 @@ PrefabInstance:
       propertyPath: _centerEyeCamera
       value: 
       objectReference: {fileID: 1995148216}
+    - target: {fileID: 3903482225804038118, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3903482225804038119, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       propertyPath: m_UseGravity
       value: 0
