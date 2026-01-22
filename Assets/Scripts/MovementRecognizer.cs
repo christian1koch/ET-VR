@@ -183,6 +183,44 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
             string fileName = Application.dataPath + "/Resources/GestureSet/" + newGestureName + ".xml";
             GestureIO.WriteGesture(pointArray, newGestureName, fileName);
         }
+
+        // WICHTIG FÜR WEBSITE MIT LOGGING!!!
+        else
+        {
+            Result result = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
+            Debug.Log($"Recognized gesture: {result.GestureClass} with score {result.Score}");
+
+            // Den Debugger suchen
+            var webDebugger = GameObject.Find("DebugManager")?.GetComponent<MagicDebugSender>();
+
+            if (result.Score >= recognitionThreshold)
+            {
+                if (Enum.TryParse(result.GestureClass, true, out SketchType sketchType))
+                {
+                    OnRecognized?.Invoke((int)sketchType);
+                    Debug.Log($"Successfully recognized as {sketchType}");
+
+                    // NErfolg senden
+                    if (webDebugger != null) 
+                        webDebugger.SendToWeb("Combat", $"✨ Zauber: {sketchType} ({result.Score:F2})");
+                }
+                else
+                {
+                    Debug.LogWarning($"Gesture '{result.GestureClass}' does not match any SketchType enum value");
+                }
+            }
+            else
+            {
+                // Misserfolg senden
+                if (webDebugger != null) 
+                    webDebugger.SendToWeb("System", $"❌ Zu ungenau: {result.GestureClass} ({result.Score:F2})");
+            }
+        }
+
+    }
+        
+
+        /* ALTER TEIL
         else
         {
             Result result = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
@@ -202,6 +240,7 @@ public class MovementRecognizer : MonoBehaviour, IRecognitionSystem
             }
         }
     }
+    */
 
     void UpdateMovement()
     {
