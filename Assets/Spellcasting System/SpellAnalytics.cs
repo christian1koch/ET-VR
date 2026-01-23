@@ -117,6 +117,7 @@ namespace Spellcasting_System
                 
                 sb.AppendLine($"{spellType}:");
                 sb.AppendLine($"  Casted: {fired}");
+                sb.AppendLine($"  Hit: {hit}");
                 sb.AppendLine($"  Missed: {missed}");
             }
             
